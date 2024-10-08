@@ -127,17 +127,22 @@
             )} was clicked!`
           );
 
+          let change_player = false;
+
           if (
             document.getElementById(clicked_event.target.id).innerText != "X" &&
             document.getElementById(clicked_event.target.id).innerText != "O"
           ) {
             document.getElementById(clicked_event.target.id).innerText = x_or_o;
+            change_player = true;
           }
 
-          if (x_or_o == "X") {
+          if (x_or_o == "X" && change_player) {
             x_or_o = "O";
-          } else {
+          } else if (x_or_o == "O" && change_player) {
             x_or_o = "X";
+          } else {
+            return;
           }
 
           document.getElementById("turn_tracker").innerText =
